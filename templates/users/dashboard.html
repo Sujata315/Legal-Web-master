@@ -1,0 +1,66 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <style>
+       .wrapper{
+          background-color: aliceblue; 
+       }
+       .topimg{
+           background-image: url("{% static 'img/bg.jpg' %} ");
+           background-position: top;
+           
+       }
+
+    </style>
+{% endblock css %}
+    
+{% block content %}
+<div class="container-fluid  wrapper">
+    <div class="row">
+        <div class="col-8">
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col">
+                        Hello, <b>{{ user.username|default:'Guest' }} </b>
+        
+                        <div>
+                            {% if user.is_authenticated %}
+                               <button> <a href="{% url 'password_change' %}">Change Password</a></button> <br>
+                                <button><a href="{% url 'upload_cases' %}">Request Cases</a> </button> <br>
+                                <button> <a href="{% url 'add_lawyer' %}">Add lawyer Profile</a> </button><br>
+                                    <button><a href="{% url 'add_Users' %}">Add User Profile</a> </button><br>
+                                        <button> <a href="{% url 'view_cases' %}">View Case Requests</a></button> <br>
+                                            <button>  <a href="{% url 'view_lawyer' %}">View lawyers</a> </button><br>
+                                                <button> <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a></button> <br>
+                                                    <button> <a href="{% url 'view_fought' %}">View fought cases</a> </button><br>
+                                                        <button> <a href="{% url 'logout' %}">Log out</a>~
+                            {% else %}
+                            <button> <a href="{% url 'login' %}">Login</a></button>
+                            {% endif %}
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 topimg">
+            <div class="container">
+                <div class="row">
+                    <div class="col my-5">
+                        <div class="card mx-auto">
+                            <div class="card-body">
+                                <h4 class="card-title">Something very cool</h4>
+                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic veritatis delectus aliquid pariatur fugit obcaecati, rem ullam laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+{% endblock content %}
+    
